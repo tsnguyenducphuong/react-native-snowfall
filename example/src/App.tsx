@@ -1,17 +1,15 @@
-import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-snowfall';
+import { ImageBackground, StyleSheet, View } from 'react-native';
+import { SnowFall } from 'react-native-snowfall';
 
 export default function App() {
-  const [result, setResult] = useState<number | undefined>();
-
-  useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <ImageBackground
+        source={require('./background.png')}
+        resizeMode="cover"
+        style={StyleSheet.absoluteFill}
+      />
+      <SnowFall />
     </View>
   );
 }
@@ -21,6 +19,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#000',
   },
   box: {
     width: 60,
