@@ -10,8 +10,7 @@ import {
 } from '@shopify/react-native-skia';
 import {
   useSharedValue,
-  interpolate,
-  cancelAnimation,
+  interpolate,  
 } from 'react-native-reanimated';
 import { useFrameCallback, withTiming } from 'react-native-reanimated';
 import { createParticle } from './helpers';
