@@ -109,12 +109,12 @@ const SnowFall: React.FC<SnowFallProps> = ({
     opacity.value = withTiming(
       1,
       {
-        duration: duration,
+        duration: 3000,
       },
       () => {
         if (autoHide) {
           opacity.value = withTiming(0, {
-            duration: duration,
+            duration: 3000,
           });
         }
       }
