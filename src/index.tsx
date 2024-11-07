@@ -5,7 +5,7 @@ import {
   Skia,
   Atlas,
   useRSXformBuffer,
-  useImage
+  useImage, Group
   
 } from '@shopify/react-native-skia';
 import {
@@ -123,13 +123,12 @@ const SnowFall: React.FC<SnowFallProps> = ({
 
    
   return (     
-    <React.Fragment>
-      {opacity &&
-      <Canvas style={styles.container} pointerEvents={'none'}>
-        <Atlas image={image} sprites={sprites} transforms={transforms} />
-      </Canvas>   
-      }
-    </React.Fragment>
+     
+      <Group opacity={opacity}>
+        <Canvas style={styles.container} pointerEvents={'none'}>
+          <Atlas image={image} sprites={sprites} transforms={transforms} />
+        </Canvas> 
+      </Group>>
 
   );
 };
