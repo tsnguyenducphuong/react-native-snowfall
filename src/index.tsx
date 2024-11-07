@@ -128,7 +128,7 @@ const SnowFall: React.FC<SnowFallProps> = ({
         <Canvas style={styles.container} pointerEvents={'none'}>
           <Atlas image={image} sprites={sprites} transforms={transforms} />
         </Canvas> 
-      </Group>>
+      </Group>
 
   );
 };
