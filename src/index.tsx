@@ -5,8 +5,8 @@ import {
   Skia,
   Atlas,
   useRSXformBuffer,
-  useImage,
-  Group
+  useImage
+  
 } from '@shopify/react-native-skia';
 import {
   useSharedValue,

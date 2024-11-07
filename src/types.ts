@@ -8,4 +8,5 @@ export interface SnowFallProps {
   imageScale?: number;
   imagePath?: DataSourceParam;
   customImage?: SkImage;
+  autoHide?:boolean;
 }
