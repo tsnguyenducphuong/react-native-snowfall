@@ -95,11 +95,11 @@ const SnowFall: React.FC<SnowFallProps> = ({
     );
   });
 
-  useEffect(() => {
-    return () => {
-      cancelAnimation(metronome);
-    };
-  }, [metronome]);
+  // useEffect(() => {
+  //   return () => {
+  //     cancelAnimation(metronome);
+  //   };
+  // }, [metronome]);
 
   if (!image) {
     return null; // or some fallback UI
