@@ -6,13 +6,14 @@ import {
   Atlas,
   useRSXformBuffer,
   useImage,
+  Group
 } from '@shopify/react-native-skia';
 import {
   useSharedValue,
   interpolate,
   cancelAnimation,
 } from 'react-native-reanimated';
-import { useFrameCallback } from 'react-native-reanimated';
+import { useFrameCallback, withTiming } from 'react-native-reanimated';
 import { createParticle } from './helpers';
 import type { SnowFallProps } from './types';
 
@@ -25,10 +26,11 @@ const SnowFall: React.FC<SnowFallProps> = ({
   maxSize = 20,
   imageScale = 0.7,
   imagePath = require('./snowflake.png'),
-
+  autoHide = false,
   customImage,
 }) => {
   const metronome = useSharedValue(0);
+  const opacity = useSharedValue(0);
 
   const { width: screenWidth, height: screenHeight } = useWindowDimensions();
 
@@ -103,10 +105,32 @@ const SnowFall: React.FC<SnowFallProps> = ({
     return null; // or some fallback UI
   }
 
-  return (
-    <Canvas style={styles.container} pointerEvents={'none'}>
-      <Atlas image={image} sprites={sprites} transforms={transforms} />
-    </Canvas>
+  useEffect(() => {
+    opacity.value = withTiming(
+      1,
+      {
+        duration: duration,
+      },
+      () => {
+        if (autoHide) {
+          opacity.value = withTiming(0, {
+            duration: duration,
+          });
+        }
+      }
+    );
+  }, [autoHide, opacity]);
+
+   
+  return (     
+    <React.Fragment>
+      {opacity &&
+      <Canvas style={styles.container} pointerEvents={'none'}>
+        <Atlas image={image} sprites={sprites} transforms={transforms} />
+      </Canvas>   
+      }
+    </React.Fragment>
+
   );
 };
 
